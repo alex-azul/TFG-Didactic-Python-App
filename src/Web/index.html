@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="app-container">
+            <div id="app-title-container">
+                <h1 id="app-title">
+                    LIBRECOMMS
+                </h1>
+            </div>
+
+            <div id="app-send-comment-container">
+                <div id="app-send-comment-author-textbox-container">
+                    <textarea id="app-send-comment-author-textbox" type="text" placeholder="Autor"></textarea>
+                </div>
+                <div id="app-send-comment-message-textbox-container">
+                    <textarea id="app-send-comment-message-textbox" type="text" placeholder="Escribe aquí tu mensaje..."></textarea>
+                </div>
+                <div id="app-send-comment-button-container">
+                    <div id="app-send-comment-button-icon-container">
+                        <span id="app-send-comment-button-icon">
+                            ➤
+                        </span>
+                    </div>
+                    <div id="app-send-comment-button-text-container">
+                        <span id="app-send-comment-button-text">
+                            ENVIAR
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <hr id="app-input-output-separator">
+
+            <div id="comment-section-container">
+
+            </div>
+
+        </div>
+
+        <hr id="main-separator">
+
+        <div id="bchview-container">
+            <div id="bootnode-container">
+                <div id="connection-manager-container">
+                    <div id="bootnode-connect-container">
+                        <span id="bootnode-connect-container-label">
+                            Bootnode IP
+                        </span>
+                        <input id="bootnode-connect-container-text" type="text" placeholder="xxx.xxx.xxx.xxx:xxxx">
+                        <button id="bootnode-connect-container-button">
+                            conectar
+                        </button>
+                    </div>
+                    <div id="select-regular-node-container">
+                        <span id="select-regular-node-label">
+                            Nodo con el que interactuar:
+                        </span>
+                        <select id="select-regular-node-select"></select>
+                        <button id="select-regular-node-mine-button">
+                            Minar
+                        </button>
+                        <button id="select-regular-node-mine-locally-button">
+                            Minar localmente
+                        </button>
+                        <button id="select-regular-node-consensus-button">
+                            Consensuar
+                        </button>
+                    </div>
+                </div>
+                <div id="bootnode-main-container">
+                    <div id="bootnode-node-connections-container">
+                        <span id="bootnode-regularnode-connections-label">
+                            Nodos regulares conectados al bootnode
+                        </span>
+                        <div id="bootnode-regularnode-connections-container">
+                            
+                        </div>
+                        <span id="bootnode-front-connections-label">
+                            Webapps conectadas al bootnode
+                        </span>
+                        <div id="bootnode-front-connections-container">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="regularnodes-container">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates for js use -->
+    <div id="templates">
+        <div id="comment-template" class="comment-container">
+            <div class="comment-meta-container">
+                <span class="comment-meta"></span>
+            </div>
+            <div class="comment-text-container">
+                <p class="comment-text"></p>
+            </div>
+        </div>
+
+        <div id="column-template" class="bchview-bch-column">
+            <div class="bchview-bch-name-container">
+                <span class="bchview-bch-name-label">
+                    
+                </span>
+            </div>
+            <div class="bchview-bch-block-label-container">
+                <span class="bchview-bch-block-label">
+                    Cadena de bloques
+                </span>
+            </div>
+            <div class="bchview-bch-blocks-container">
+
+            </div>
+            <div class="bchview-bch-unmined-messages-label-container">
+                <span class="bchview-bch-unmined-messages-label">
+                    Mensajes sin minar
+                </span>
+            </div>
+            <div class="bchview-bch-unmined-messages-container">
+
+            </div>
+        </div>
+
+        <div id="block-template" class="bchview-bch-block">
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Bloque:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value block-attribute-block-number">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Nonce:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value block-attribute-nonce">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Hash previo:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value block-attribute-previous-hash">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Hash:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value block-attribute-hash">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Mensaje:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value block-attribute-message">
+                        #
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="unmined-message-template" class="bchview-bch-block unmined-message">
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Autor:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value unmined-message-attribute-author">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Mensaje:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value unmined-message-attribute-message">
+                        #
+                    </span>
+                </div>
+            </div>
+            <div class="bchview-block-attribute-container">
+                <div class="bchview-block-attribute-children-label">
+                    <span class="bchview-block-attribute-label">
+                        Fecha:
+                    </span>
+                </div>
+                <div class="bchview-block-attribute-children-value">
+                    <span class="bchview-block-attribute-value unmined-message-attribute-timestamp">
+                        #
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="layout_updatesv2.js"></script>
+    <script src="connectionsv2.js"></script>
+    <script src="bindings.js"></script>
+</body>
+
+</html>

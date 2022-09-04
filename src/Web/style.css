@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#app-container {
+    order: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px;
+    gap: 25px;
+}
+
+#app-title-container {
+    border: 5px solid black;
+}
+
+#app-title {
+    width: fit-content;
+    font-family: 'Oswald', sans-serif;
+    font-size: 50px;
+    margin: 0;
+    padding: 5px 25px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#app-send-comment-container {
+    width: 75%;
+}
+
+#app-send-comment-author-textbox-container {
+    border: 5px solid black;
+    border-bottom: 0;
+    height: 25px;
+    padding: 5px;
+}
+
+#app-send-comment-message-textbox-container {
+    border: 5px solid black;
+    border-bottom: 0;
+    height: 125px;
+    padding: 5px;
+}
+
+#app-send-comment-author-textbox {
+    border: 0;
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+}
+
+#app-send-comment-message-textbox {
+    border: 0;
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+}
+
+#app-send-comment-button-container {
+    display: flex;
+    flex-direction: row;
+    border: 5px solid black;
+}
+
+#app-send-comment-button-container:hover {
+    cursor: pointer;
+}
+
+#app-send-comment-button-container:active #app-send-comment-button-icon {
+    color: white;
+    background-color: black;
+}
+
+#app-send-comment-button-container:active #app-send-comment-button-text-container {
+    background-color: white;
+}
+
+#app-send-comment-button-container:hover #app-send-comment-button-text {
+    font-size: 22px;
+}
+
+#app-send-comment-button-icon-container {
+    order: 1;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-right: 5px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+#app-send-comment-button-icon {
+    color: black;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    transition: all 0.1s ease;
+}
+
+#app-send-comment-button-text-container {
+    order: 2;
+    width: 100%;
+    padding-left: 10px;
+    transition: all 0.1s ease;
+}
+
+#app-send-comment-button-text {
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    line-height: 40px;
+    transition: all 0.1s ease;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#app-input-output-separator {
+    margin: 0;
+    width: 100%;
+    border: 0;
+    border-top: 10px solid black;
+}
+
+#comment-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: left;
+    overflow-y: auto;
+}
+
+.comment-container {
+    border-left: 5px solid black;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-meta {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+
+.comment-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    margin: 0;
+}
+
+#main-separator {
+    margin: 0;
+    border: 1px solid black;
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
+    order: 2;
+}
+
+#bchview-container {
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#bchview-container * {
+    font-family: sans-serif;
+}
+
+#bootnode-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#bootnode-container-separator {
+    width: 100%;
+    margin: 0;
+    border: 1px solid black;
+}
+
+#bootnode-connect-container {
+    padding: 15px;
+    border-right: 3px solid blacK;
+    flex: 1 1 0px;
+    text-align: center;
+}
+
+#bootnode-main-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+#bootnode-node-connections-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#bootnode-regularnode-connections-container {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+#bootnode-regularnode-connections-label, #bootnode-front-connections-label {
+    color: white;
+    background-color: #333333;
+    padding: 5px 15px;
+}
+
+#bootnode-front-connections-container {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+#regularnodes-container {
+    flex-grow: 10;
+    background-color: #333333;
+    display: flex;
+    flex-direction: row;
+    border-left: 1px solid black;
+}
+
+.bchview-bch-column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    min-width: 150px;
+}
+
+.bchview-bch-name-container {
+    text-align: center;
+    background-color: #AAAAAA;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 10px 0;
+}
+
+.bchview-bch-block {
+    border: 1px solid black;
+    background-color:  	#9fba85;
+    padding: 10px 0;
+}
+
+.bchview-bch-block.unmined-message {
+    border: 1px solid black;
+    background-color:  	#b48080;
+    padding: 10px 0;
+}
+
+.bchview-block-attribute-container {
+    display: flex;
+    gap: 15px;
+}
+
+.bchview-block-attribute-children-label {
+    min-width: 110px;
+    text-align: right;
+}
+
+.bchview-block-attribute-children-value {
+    flex-grow: 1;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;  
+}
+
+#select-regular-node-container {
+    padding: 15px;
+    flex: 1 1 0px;
+    text-align: center;
+}
+
+#bootnode-regularnode-connections-container span, #bootnode-front-connections-container span {
+    margin: 0px 5px;
+}
+
+.bchview-bch-block-label-container, .bchview-bch-unmined-messages-label-container {
+    padding: 5px;
+    font-weight: bolder;
+    text-align: center;
+    background-color: #242b1e;
+    color: white;
+    border: 1px solid black;
+}
+
+.bchview-bch-unmined-messages-label-container {
+    background-color: #352525;
+}
+
+#connection-manager-container {
+    display: flex;
+}
+
+#templates {
+    display: none;
+}
